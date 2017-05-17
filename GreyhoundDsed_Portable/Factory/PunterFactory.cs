@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GreyhoundDsed_Portable.Model
+namespace GreyhoundDsed_Portable.Factory
 {
-    abstract class Dog
+    class PunterFactory
     {
-        public int Id { get; set; }
-        public int Pos { get; set; }
     }
 }
