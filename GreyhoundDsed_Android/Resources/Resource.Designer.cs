@@ -41,11 +41,36 @@ namespace GreyhoundDsed_Android
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int beach_sand = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int turtle = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int water = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int wetSand = 2130837507;
 			
 			static Drawable()
 			{
@@ -57,11 +82,48 @@ namespace GreyhoundDsed_Android
 			}
 		}
 		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f060002
+			public const int btnStart = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public const int frameSandWrap = 2131099651;
+			
+			// aapt resource value: 0x7f060005
+			public const int imgWater = 2131099653;
+			
+			// aapt resource value: 0x7f060004
+			public const int imgWetSand = 2131099652;
+			
+			// aapt resource value: 0x7f060001
+			public const int lblTitle = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int logo = 2131099648;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
 		public partial class Layout
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int Betting = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int Race = 2130903042;
 			
 			static Layout()
 			{
@@ -76,11 +138,11 @@ namespace GreyhoundDsed_Android
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
 			static String()
 			{
