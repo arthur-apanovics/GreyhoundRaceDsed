@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
@@ -106,6 +106,7 @@
     <Compile Include="RacePage.xaml.cs">
       <DependentUpon>RacePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TrailBindingXamlConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -114,15 +115,25 @@
     <None Include="GreyhoundDsed_Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\eggs\egg1_1.png" />
+    <Content Include="Assets\eggs\egg1_2.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
-    <Content Include="Assets\shells\blue.png" />
-    <Content Include="Assets\shells\green.png" />
-    <Content Include="Assets\shells\purple.png" />
-    <Content Include="Assets\shells\red.png" />
+    <Content Include="Assets\shells\blue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\shells\green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\shells\purple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\shells\red.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
@@ -150,8 +161,16 @@
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
     <Content Include="Assets\turtle.png" />
-    <Content Include="Assets\water.png" />
-    <Content Include="Assets\wetsand.png" />
+    <Content Include="Assets\beach\water.png" />
+    <Content Include="Assets\beach\wetsand.png" />
+    <Content Include="Assets\turtles_anim\t_b-1.png" />
+    <Content Include="Assets\turtles_anim\t_b-2.png" />
+    <Content Include="Assets\turtles_anim\t_g-1.png" />
+    <Content Include="Assets\turtles_anim\t_g-2.png" />
+    <Content Include="Assets\turtles_anim\t_p-1.png" />
+    <Content Include="Assets\turtles_anim\t_p-2.png" />
+    <Content Include="Assets\turtles_anim\t_r-1.png" />
+    <Content Include="Assets\turtles_anim\t_r-2.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />

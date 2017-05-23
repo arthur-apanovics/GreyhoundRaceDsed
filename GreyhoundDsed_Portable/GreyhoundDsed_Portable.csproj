@@ -35,8 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Factory\PunterFactory.cs" />
-    <Compile Include="Factory\TurtleFactory.cs" />
+    <Compile Include="Data\PunterData.cs" />
+    <Compile Include="Factory\PositionFactory.cs" />
+    <Compile Include="Factory\PunterFactory.Windows.cs" />
+    <Compile Include="Factory\TurtleFactory.Android.cs" />
+    <Compile Include="Factory\TurtleFactory.Windows.cs" />
     <Compile Include="IBet.cs" />
     <Compile Include="Model\Punter.cs" />
     <Compile Include="Model\Turtle.cs" />

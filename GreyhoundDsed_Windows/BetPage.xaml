@@ -5,8 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Factory="using:GreyhoundDsed_Portable.Factory"
+    xmlns:Data="using:GreyhoundDsed_Portable.Data"
     x:Class="GreyhoundDsed_Windows.BetPage"
-    mc:Ignorable="d" d:DesignWidth="406.8" d:DesignHeight="762.4" Width="Auto" Height="Auto" MinWidth="360" MinHeight="640">
+    mc:Ignorable="d" d:DesignWidth="544" d:DesignHeight="911.333" Width="Auto" Height="Auto" MinWidth="500" MinHeight="640" MaxWidth="700">
     <Page.Resources>
         <DataTemplate x:Key="TurtleTemplate">
             <Grid Margin="10" >
@@ -14,61 +15,89 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="0">
-                    <Image Height="70" Width="70" Margin="0,5,0,0" Source="{Binding ShellFilePath}"/>
+                    <Image Height="90" Width="90" Margin="0,5,0,0" Source="{Binding ShellFilePath}"/>
                     <TextBlock Text="{Binding Color}" Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="PunterTemplate">
+            <Grid Margin="10" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Bold" Margin="0,0,5,0"/>
+                    <TextBlock Text="bets" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" FontSize="24" Margin="0,0,5,0"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Bet, FallbackValue=0.00, TargetNullValue=Null}" FontSize="24" FontWeight="Bold" Margin="0"/>
+                    <TextBlock TextWrapping="Wrap" Text="$" FontSize="24" Margin="0,0,5,0" FontWeight="Bold"/>
+                    <TextBlock TextWrapping="Wrap" Text="on" FontSize="24" Margin="0,0,5,0"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding BetOn, FallbackValue=None, TargetNullValue=None}" FontSize="24" FontWeight="Bold" Margin="0,0,5,0"/>
+                    <TextBlock TextWrapping="Wrap" Text="(" FontSize="24" FontStyle="Italic"/>
+                    <TextBlock TextWrapping="Wrap" Text="Max" FontSize="24" FontStyle="Italic" Margin="0,0,5,0"/>
+                    <TextBlock TextWrapping="Wrap" Text="$" FontSize="24" FontStyle="Italic"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Money, FallbackValue=0.00, TargetNullValue=Null}" FontSize="24" FontStyle="Italic"/>
+                    <TextBlock TextWrapping="Wrap" Text=")" FontSize="24" FontStyle="Italic"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid x:Name="gridMain" Background="#FF6AA4B8">
+    <Page.DataContext>
+        <Data:PunterData/>
+    </Page.DataContext>
+
+    <Grid x:Name="gridMain" Background="#FFC3F0FF">
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid x:Name="gridAiBet">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Border x:Name="borderTitle" Margin="0" Padding="10" Background="#FFFD7171" >
+            <Border x:Name="borderTitle" Margin="0" Padding="10" Background="#FFFF9898" >
                 <TextBlock x:Name="lblBets" TextWrapping="Wrap" Text="BETTING" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
             </Border>
-            <ListView x:Name="listBets" Grid.Row="1"/>
+            <ListView x:Name="listBets" Grid.Row="1" ItemTemplate="{StaticResource PunterTemplate}" ItemsSource="{Binding AiPunters}" Margin="0,20" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                <ListView.DataContext>
+                    <local:Punters/>
+                </ListView.DataContext>
+            </ListView>
         </Grid>
-        <Grid x:Name="gridPlayerBet" Grid.Row="1" Grid.RowSpan="2">
-            <StackPanel x:Name="stackPlayerBet" Padding="10">
-                <StackPanel x:Name="stackLblBet" Orientation="Horizontal">
-                    <TextBlock x:Name="lblYouBet" TextWrapping="Wrap" Text="You bet" FontSize="24" Margin="0,0,10,0"/>
-                    <TextBlock x:Name="lblDollarSign" TextWrapping="Wrap" Text="$" FontSize="24"/>
-                    <TextBlock x:Name="lblAmount" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderMoney, Mode=OneWay}" FontSize="24"/>
-                </StackPanel>
-                <Slider x:Name="sliderMoney" SmallChange="5" StepFrequency="5" Value="40" Foreground="#FFFFC500" Margin="0,10,0,0" TickFrequency="5" TickPlacement="BottomRight"/>
+        <Grid x:Name="gridPlayerBet" Grid.Row="1" Padding="10" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="stackPlayerBet" Padding="10" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Grid x:Name="gridPlayerBetAndWallet" Height="32">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel x:Name="stackLblBet" Orientation="Horizontal">
+                        <TextBlock x:Name="lblYouBet" TextWrapping="Wrap" Text="You bet" FontSize="24" Margin="0,0,10,0"/>
+                        <TextBlock x:Name="lblDollarSign" TextWrapping="Wrap" Text="$" FontSize="24"/>
+                        <TextBlock x:Name="lblAmount" TextWrapping="Wrap" Text="{Binding Value, ElementName=sliderMoney}" FontSize="24"/>
+                    </StackPanel>
+                    <StackPanel x:Name="stackWallet" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock x:Name="lblWallet" TextWrapping="Wrap" Text="Wallet:" FontSize="24" Margin="0,0,5,0"/>
+                        <TextBlock x:Name="lblDollarsign" TextWrapping="Wrap" FontSize="24" Text="$"/>
+                        <TextBlock x:Name="lblWalletAmount" TextWrapping="Wrap" Text="{Binding PlayerPunter.Money}" FontSize="24"/>
+                    </StackPanel>
+                </Grid>
+                <Slider x:Name="sliderMoney" SmallChange="5" StepFrequency="5" Value="{Binding PlayerPunter.Bet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFFFC500" Margin="0,10,0,0" TickFrequency="5" TickPlacement="BottomRight" Maximum="{Binding PlayerPunter.Money}" Minimum="5" />
                 <TextBlock x:Name="lblBetOn" TextWrapping="Wrap" Text="On" FontSize="24" Margin="0,10,0,0"/>
-                <GridView x:Name="gridTurtles" ItemsSource="{Binding Turtles}" IsSwipeEnabled="False" SelectionMode="Single" ItemTemplate="{StaticResource TurtleTemplate}" Margin="0,10,0,0">
+                <GridView x:Name="gridTurtles" ItemsSource="{Binding TurtlesWindows}" SelectedItem="{Binding Text, ElementName=hiddenTurtleSelectHelper, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSwipeEnabled="False" SelectionMode="Single" ItemTemplate="{StaticResource TurtleTemplate}" Margin="0,10,0,0" SelectedIndex="0" HorizontalAlignment="Center">
                     <GridView.DataContext>
                         <Factory:TurtleFactory/>
                     </GridView.DataContext>
                 </GridView>
-                <Border x:Name="borderWallet_Bet" Margin="0,10,0,0" >
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="btnBet" Content="Place Bet" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0" Grid.Column="1" Background="#6400FFA2" FontSize="20"/>
-                        <StackPanel x:Name="stackMoneyLeft" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0" VerticalAlignment="Center">
-                            <TextBlock x:Name="lblMoneyLeft" TextWrapping="Wrap" Text="Wallet:" FontSize="20" Margin="0,0,5,0"/>
-
-                            <TextBlock x:Name="lblAmountLeft" TextWrapping="Wrap" Text="$60" Margin="0" FontSize="20"/>
-
-                        </StackPanel>
-                    </Grid>
-                </Border>
             </StackPanel>
         </Grid>
-        <Button x:Name="btnRace" Content="RACE" FontSize="24" Background="#FFFF9898" HorizontalAlignment="Stretch" Height="50" Margin="0" Grid.Row="2"/>
+        <Button x:Name="btnRace" Content="RACE" FontSize="24" Background="#FFFD7171" HorizontalAlignment="Stretch" Height="70" Margin="0,0,0,50" Grid.Row="2" Click="btnRace_Click"/>
 
     </Grid>
 </Page>
