@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreyhoundDsed_Portable", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreyhoundDsed_Windows", "GreyhoundDsed_Windows\GreyhoundDsed_Windows.csproj", "{55C375D1-9A1A-4434-9B78-FE1EAB619633}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{D09C77A7-9F7D-47F6-9828-D528F28ECC48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,26 @@ Global
 		{55C375D1-9A1A-4434-9B78-FE1EAB619633}.Release|x86.ActiveCfg = Release|x86
 		{55C375D1-9A1A-4434-9B78-FE1EAB619633}.Release|x86.Build.0 = Release|x86
 		{55C375D1-9A1A-4434-9B78-FE1EAB619633}.Release|x86.Deploy.0 = Release|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|ARM.Build.0 = Debug|ARM
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|ARM.Deploy.0 = Debug|ARM
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|x64.ActiveCfg = Debug|x64
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|x64.Build.0 = Debug|x64
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|x64.Deploy.0 = Debug|x64
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|x86.ActiveCfg = Debug|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|x86.Build.0 = Debug|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Debug|x86.Deploy.0 = Debug|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|Any CPU.ActiveCfg = Release|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|ARM.ActiveCfg = Release|ARM
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|ARM.Build.0 = Release|ARM
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|ARM.Deploy.0 = Release|ARM
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|x64.ActiveCfg = Release|x64
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|x64.Build.0 = Release|x64
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|x64.Deploy.0 = Release|x64
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|x86.ActiveCfg = Release|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|x86.Build.0 = Release|x86
+		{D09C77A7-9F7D-47F6-9828-D528F28ECC48}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

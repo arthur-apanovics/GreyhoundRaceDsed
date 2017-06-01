@@ -15,17 +15,17 @@ namespace GreyhoundDsed_Portable.Factory
 
         #region Old ai punter method. Does not comply with assignment goals
 
-        public Punter[] GetAiPunters()
-        {
-            var punters = new Punter[]
-            {
-                new Punter("Bixby", 150),
-                new Punter("Sergey", 60),
-                new Punter("Joe", 45)
-            };
+        //public Punter[] GetAiPunters()
+        //{
+        //    var punters = new Punter[]
+        //    {
+        //        new Punter("Bixby", 150),
+        //        new Punter("Sergey", 60),
+        //        new Punter("Joe", 45)
+        //    };
 
-            return punters;
-        }
+        //    return punters;
+        //}
 
         #endregion
 
@@ -86,19 +86,6 @@ namespace GreyhoundDsed_Portable.Factory
             }
 
             return aiPunters;
-        }
-
-        public List<Punter> GetAllPunters(Punter[] aiPunters, Punter player)
-        {
-            List<Punter> allPunters = new List<Punter>();
-
-            foreach (Punter aiPunter in aiPunters)
-            {
-                allPunters.Add(aiPunter);
-            }
-            allPunters.Add(player);
-
-            return allPunters;
         }
     }
 }

@@ -24,10 +24,6 @@ namespace GreyhoundDsed_Windows
 {
     public sealed partial class RacePage : Page
     {
-        //public int CrawlIncrement { get; set; } = 25; // max random number to increment by
-        //public int CrawlSpeed { get; set; } = 50; // update time in milliseconds
-        //public double Divider { get; set; } = 1.5d; // used to determine the wining line that a turtle needs to pass to win
-
         public RacePage()
         {
             this.InitializeComponent();
@@ -50,7 +46,6 @@ namespace GreyhoundDsed_Windows
 
             do
             {
-
                 double[] newPositions = race.MoveTurtles();
 
                 for (int i = 0; i < turtles.Length; i++)
@@ -70,7 +65,6 @@ namespace GreyhoundDsed_Windows
 
                     await Task.Delay(TimeSpan.FromMilliseconds(race.CrawlSpeed));
                 }
-
             } while (!isAtLimit);
 
             var dialog = new MessageDialog($"{winner} is the winner!");
@@ -84,74 +78,7 @@ namespace GreyhoundDsed_Windows
             this.Frame.Navigate(typeof(BetPage), winner);
         }
 
-        #region Old Race Method
-
-        //private async void RaceTurtles()
-        //{
-        //    Canvas[] turtles = new Canvas[] { canTurtleRed, canTurtleGreen, canTurtleBlue, canTurtlePurple };
-
-        //    // used to determine when the turtles have reached center of screen to start animations
-        //    int turtleCenter = Convert.ToInt32(page.ActualHeight / 2);
-
-        //    // used for determining the winning turtle
-        //    int turtleLimit = Convert.ToInt32(page.ActualHeight);
-
-        //    bool isTurtleAtCenter = false;
-        //    bool isTurtleAtLimit = false;
-
-        //    var rnd = new Random();
-
-        //    do
-        //    {
-        //        for (int j = 0; j < turtles.Length; j++)
-        //        {
-        //            turtles[j].Height = turtles[j].Height + rnd.Next(0, CrawlIncrement);
-
-        //            if (turtles[j].Height >= turtleCenter && !isTurtleAtCenter)
-        //            {
-        //                isTurtleAtCenter = true;
-        //                ScrollTheView.Begin();
-        //            }
-        //            else if (turtles[j].Height >= turtleLimit / Divider)
-        //            {
-        //                isTurtleAtLimit = true;
-        //                await ShowWinner(turtles[j]);
-        //                return;
-        //            }
-
-        //            await Task.Delay(TimeSpan.FromMilliseconds(CrawlSpeed));
-        //        }
-        //    } while (!isTurtleAtLimit);
-        //}
-
-        //private async Task<bool> ShowWinner(Canvas canTurtle)
-        //{
-        //    Turtle.TurtleColor winner = Turtle.TurtleColor.Red;
-
-        //    switch (canTurtle.Name)
-        //    {
-        //        case "canTurtleRed":
-        //            winner = Turtle.TurtleColor.Red;
-        //            break;
-        //        case "canTurtleGreen":
-        //            winner = Turtle.TurtleColor.Green;
-        //            break;
-        //        case "canTurtleBlue":
-        //            winner = Turtle.TurtleColor.Blue;
-        //            break;
-        //        case "canTurtlePurple":
-        //            winner = Turtle.TurtleColor.Purple;
-        //            break;
-        //    }
-
-        //    var dialog = new MessageDialog($"{winner} is the winner!");
-        //    await dialog.ShowAsync();
-        //    return true;
-        //}
-
-        #endregion
-
-        //DEBUG STUFF.
+        //Hidden button for reset
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(BetPage));

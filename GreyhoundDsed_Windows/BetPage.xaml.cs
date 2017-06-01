@@ -30,7 +30,11 @@ namespace GreyhoundDsed_Windows
         public static Punter[] AiPunters { get; set; }
         public static Punter PlayerPunter { get; set; } = new Punter("Player", 100) { Bet = 5 };
 
-        
+        public BetPage()
+        {
+            this.InitializeComponent();
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -46,6 +50,19 @@ namespace GreyhoundDsed_Windows
 
             AssignRandomBetsToAi(AiPunters);
         }
+
+        private void btnRace_Click(object sender, RoutedEventArgs e)
+        {
+            if (gridTurtles.SelectedIndex < 0)
+            {
+                SelectionNotify.Begin();
+                return;
+            }
+            this.Frame.Navigate(typeof(RacePage));
+        }
+        
+        #region Betting logic
+        //TODO Refactor whole region into the portable project.
 
         private void CheckForBust(Punter punter)
         {
@@ -93,19 +110,7 @@ namespace GreyhoundDsed_Windows
             }
         }
 
-        private async void ShowDialog(StringBuilder message)
-        {
-            var dialog = new MessageDialog(message.ToString());
-            await dialog.ShowAsync();
-        }
-
-        private async void GameOver()
-        {
-            var dialog = new MessageDialog("You lost! Bye, bye!");
-            await dialog.ShowAsync();
-            Application.Current.Exit();
-        }
-
+        // convert winning turtle string to TurtleColor Enum
         private Turtle.TurtleColor WinnerToTurtleColor(string winner)
         {
             switch (winner)
@@ -124,20 +129,22 @@ namespace GreyhoundDsed_Windows
             }
         }
 
-        public BetPage()
+        #endregion
+
+        private async void ShowDialog(StringBuilder message)
         {
-            this.InitializeComponent();
+            var dialog = new MessageDialog(message.ToString());
+            await dialog.ShowAsync();
         }
 
-        private void btnRace_Click(object sender, RoutedEventArgs e)
+        private async void GameOver()
         {
-            if (gridTurtles.SelectedIndex < 0)
-            {
-                SelectionNotify.Begin();
-                return;
-            }
-            this.Frame.Navigate(typeof(RacePage));
+            var dialog = new MessageDialog("You lost! Bye, bye!");
+            await dialog.ShowAsync();
+            Application.Current.Exit();
         }
+
+        #region AiPunter Methods
 
         private void AssignRandomBetsToAi(Punter[] punters)
         {
@@ -156,5 +163,7 @@ namespace GreyhoundDsed_Windows
                 punters[i] = factory.GetNewAiPunter(i);
             }
         }
+
+        #endregion
     }
 }

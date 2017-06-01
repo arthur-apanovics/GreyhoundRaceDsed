@@ -10,7 +10,7 @@ namespace GreyhoundDsed_Portable
     public class RaceFunc : ICheckPositions
     {
         public int CrawlIncrement { get; set; } = 25; // max random number to increment by
-        public int CrawlSpeed { get; set; } = 50; // update time in milliseconds
+        public int CrawlSpeed { get; set; } = 50; // thread update time in milliseconds
         public double Divider { get; set; } = 1.5d; // used to determine the wining line that a turtle needs to pass to win
 
         // Interface prop
@@ -44,36 +44,11 @@ namespace GreyhoundDsed_Portable
             }
 
             return newPos;
-
-            #region old
-
-            //do
-            //{
-            //    for (int j = 0; j < turtlesHeight.Length; j++)
-            //    {
-            //        turtlesHeight[j].Height = turtlesHeight[j].Height + rnd.Next(0, CrawlIncrement);
-
-            //        if (turtlesHeight[j].Height >= turtleCenter && !isTurtleAtCenter)
-            //        {
-            //            isTurtleAtCenter = true;
-            //            ScrollTheView.Begin();
-            //        }
-            //        else if (turtlesHeight[j].Height >= turtleLimit / Divider)
-            //        {
-            //            isTurtleAtLimit = true;
-            //            await ShowWinner(turtlesHeight[j]);
-            //            return;
-            //        }
-
-            //        await Task.Delay(TimeSpan.FromMilliseconds(CrawlSpeed));
-            //    }
-            //} while (!isTurtleAtLimit);
-
-            #endregion
         }
 
         public string GetWinnerName(string canvasName)
         {
+            // assign Red as default since enum is non-nullable
             Turtle.TurtleColor winner = Turtle.TurtleColor.Red;
 
             switch (canvasName)
