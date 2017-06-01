@@ -11,7 +11,6 @@ namespace GreyhoundDsed_Portable.Model
     {
         public TurtleColor Color { get; set; }
         public string ShellFilePath { get; set; }
-        //public string TurtleFilePath { get; set; }
 
         public enum TurtleColor
         {

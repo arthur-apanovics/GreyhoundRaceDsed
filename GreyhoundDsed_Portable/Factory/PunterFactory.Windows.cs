@@ -56,9 +56,16 @@ namespace GreyhoundDsed_Portable.Factory
 
             for (int i = 0; i < aiPunters.Length; i++)
             {
-                // get a random number and round it to the nearest 5
-                var randomBet = 5 * (int)Math.Round(rnd.Next(10, aiPunters[i].Money) / 5.0);
-                aiPunters[i].Bet = randomBet;
+                if (!aiPunters[i].isBust)
+                {
+                    // get a random number and round it to the nearest 5
+                    var randomBet = 5 * (int) Math.Round(rnd.Next(5, aiPunters[i].Money) / 5.0);
+                    aiPunters[i].Bet = randomBet;
+                }
+                else
+                {
+                    aiPunters[i].Bet = 0;
+                }
             }
 
             return aiPunters;

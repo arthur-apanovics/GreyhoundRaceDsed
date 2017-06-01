@@ -11,6 +11,7 @@ namespace GreyhoundDsed_Portable.Model
     {
         public string Name { get; set; }
         public int Money { get; set; }
+        public bool isBust { get; set; } = false;
 
         // IBet interface properties
         public int Bet { get; set; }
@@ -21,7 +22,5 @@ namespace GreyhoundDsed_Portable.Model
             Name = name;
             Money = money;
         }
-
-
     }
 }

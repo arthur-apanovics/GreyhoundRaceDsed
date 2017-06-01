@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Factory="using:GreyhoundDsed_Portable.Factory"
-    xmlns:Data="using:GreyhoundDsed_Portable.Data"
+    xmlns:Data="using:GreyhoundDsed_Portable.Data" x:Name="page"
     x:Class="GreyhoundDsed_Windows.BetPage"
     mc:Ignorable="d" d:DesignWidth="544" d:DesignHeight="911.333" Width="Auto" Height="Auto" MinWidth="500" MinHeight="640" MaxWidth="700">
     <Page.Resources>
@@ -44,11 +44,31 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        <Storyboard x:Name="SelectionNotify">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="gridTurtles">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
-
-    <Page.DataContext>
-        <Data:PunterData/>
-    </Page.DataContext>
 
     <Grid x:Name="gridMain" Background="#FFC3F0FF">
         <Grid.RowDefinitions>
@@ -64,11 +84,7 @@
             <Border x:Name="borderTitle" Margin="0" Padding="10" Background="#FFFF9898" >
                 <TextBlock x:Name="lblBets" TextWrapping="Wrap" Text="BETTING" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
             </Border>
-            <ListView x:Name="listBets" Grid.Row="1" ItemTemplate="{StaticResource PunterTemplate}" ItemsSource="{Binding AiPunters}" Margin="0,20" HorizontalAlignment="Left" VerticalAlignment="Center" >
-                <ListView.DataContext>
-                    <local:Punters/>
-                </ListView.DataContext>
-            </ListView>
+            <ListView x:Name="listBets" Grid.Row="1" ItemTemplate="{StaticResource PunterTemplate}" ItemsSource="{Binding AiPunters, ElementName=page}" Margin="0,20" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Grid>
         <Grid x:Name="gridPlayerBet" Grid.Row="1" Padding="10" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="stackPlayerBet" Padding="10" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -85,12 +101,15 @@
                     <StackPanel x:Name="stackWallet" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <TextBlock x:Name="lblWallet" TextWrapping="Wrap" Text="Wallet:" FontSize="24" Margin="0,0,5,0"/>
                         <TextBlock x:Name="lblDollarsign" TextWrapping="Wrap" FontSize="24" Text="$"/>
-                        <TextBlock x:Name="lblWalletAmount" TextWrapping="Wrap" Text="{Binding PlayerPunter.Money}" FontSize="24"/>
+                        <TextBlock x:Name="lblWalletAmount" TextWrapping="Wrap" Text="{Binding PlayerPunter.Money, ElementName=page}" FontSize="24"/>
                     </StackPanel>
                 </Grid>
-                <Slider x:Name="sliderMoney" SmallChange="5" StepFrequency="5" Value="{Binding PlayerPunter.Bet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFFFC500" Margin="0,10,0,0" TickFrequency="5" TickPlacement="BottomRight" Maximum="{Binding PlayerPunter.Money}" Minimum="5" />
+                <Slider x:Name="sliderMoney" SmallChange="5" StepFrequency="5" Value="{Binding PlayerPunter.Bet, ElementName=page, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFFFC500" Margin="0,10,0,0" TickFrequency="5" TickPlacement="BottomRight" Maximum="{Binding PlayerPunter.Money, ElementName=page}" Minimum="5" />
                 <TextBlock x:Name="lblBetOn" TextWrapping="Wrap" Text="On" FontSize="24" Margin="0,10,0,0"/>
-                <GridView x:Name="gridTurtles" ItemsSource="{Binding TurtlesWindows}" SelectedItem="{Binding Text, ElementName=hiddenTurtleSelectHelper, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSwipeEnabled="False" SelectionMode="Single" ItemTemplate="{StaticResource TurtleTemplate}" Margin="0,10,0,0" SelectedIndex="0" HorizontalAlignment="Center">
+                <GridView x:Name="gridTurtles" ItemsSource="{Binding TurtlesWindows}" SelectedItem="{Binding Text, ElementName=hiddenTurtleSelectHelper, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSwipeEnabled="False" SelectionMode="Single" ItemTemplate="{StaticResource TurtleTemplate}" Margin="0,10,0,0" SelectedIndex="0" HorizontalAlignment="Center" Background="#00000000" HorizontalContentAlignment="Stretch" Padding="0" RenderTransformOrigin="0.5,0.5">
+                    <GridView.RenderTransform>
+                        <CompositeTransform/>
+                    </GridView.RenderTransform>
                     <GridView.DataContext>
                         <Factory:TurtleFactory/>
                     </GridView.DataContext>

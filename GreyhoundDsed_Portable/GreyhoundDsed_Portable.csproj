@@ -35,15 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Data\PunterData.cs" />
-    <Compile Include="Factory\PositionFactory.cs" />
     <Compile Include="Factory\PunterFactory.Windows.cs" />
     <Compile Include="Factory\TurtleFactory.Android.cs" />
     <Compile Include="Factory\TurtleFactory.Windows.cs" />
     <Compile Include="IBet.cs" />
+    <Compile Include="ICheckPositions.cs" />
     <Compile Include="Model\Punter.cs" />
     <Compile Include="Model\Turtle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaceFunc.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

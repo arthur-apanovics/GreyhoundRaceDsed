@@ -115,6 +115,7 @@
     <None Include="GreyhoundDsed_Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\beach\horizon.png" />
     <Content Include="Assets\eggs\egg1_1.png" />
     <Content Include="Assets\eggs\egg1_2.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
