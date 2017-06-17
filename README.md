@@ -1,11 +1,12 @@
 # Greyhound Race Style Game
 
-<img alt="greyhound" align="left" src="https://user-images.githubusercontent.com/26443901/27252774-7fe3c5a8-53ba-11e7-94f0-d69fd1ac386b.gif" height="600px" />
+<img alt="greyhound" align="right" src="https://user-images.githubusercontent.com/26443901/27252774-7fe3c5a8-53ba-11e7-94f0-d69fd1ac386b.gif" height="600px" />
 
 <p>Greyhound Race Game assignment.</br>
 Goal: use of classes (base,abstract, etc.)</br>
 Made using Xamarin cross-platform development framework.</br>
 NOTE: Android version is currently on hold and will be ported later.</p>
+<br clear="all"/>
 
 ## Assignment requirements
 
