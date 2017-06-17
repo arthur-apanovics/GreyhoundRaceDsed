@@ -1,9 +1,11 @@
 # Greyhound Race Style Game
-Greyhound Race Game assignment. Goal: use of classes (base,abstract, etc.)  
-Made using Xamarin cross-platform development framework. 
-NOTE: Android version is currently on hold and will be ported later.
 
-![greyhound](https://user-images.githubusercontent.com/26443901/27252774-7fe3c5a8-53ba-11e7-94f0-d69fd1ac386b.gif)
+<img alt="greyhound" align="left" src="https://user-images.githubusercontent.com/26443901/27252774-7fe3c5a8-53ba-11e7-94f0-d69fd1ac386b.gif" height="600px" />
+
+<p>Greyhound Race Game assignment.</br>
+Goal: use of classes (base,abstract, etc.)</br>
+Made using Xamarin cross-platform development framework.</br>
+NOTE: Android version is currently on hold and will be ported later.</p>
 
 ## Assignment requirements
 
@@ -22,4 +24,4 @@ Class Operations
 Unit test  
 3.1 A unit test using Instantiation
 
-<img alt="Assignment example" src="https://user-images.githubusercontent.com/26443901/27252788-b9066cbe-53ba-11e7-82e4-5dfce4ea7be1.png" width="400px" />
+<img alt="Assignment example" src="https://user-images.githubusercontent.com/26443901/27252788-b9066cbe-53ba-11e7-82e4-5dfce4ea7be1.png" width="500px" />
